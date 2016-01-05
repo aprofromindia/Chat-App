@@ -3,12 +3,10 @@
 
 target 'Chat App' do
 pod 'RegExCategories', '~> 1.0'
-pod 'Mantle', '~>2.0.6'
-pod 'AFNetworking', '~>2.6'
-pod  'CocoaLumberjack', '~>2.0'
+pod 'AFNetworking', '~>3.0.4'
+pod 'CocoaLumberjack', '~>2.0'
 end
 
 target 'Chat AppTests' do
 
 end
-

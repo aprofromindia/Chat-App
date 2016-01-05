@@ -1,16 +1,16 @@
 //
-//  RxMatch+NSDictionary.m
+//  RxMatch+NSString.m
 //  Chat App
 //
-//  Created by Apro on 26/12/15.
+//  Created by Apro on 27/12/15.
 //  Copyright © 2015 Apro. All rights reserved.
 //
 
-#import "RxMatch+NSDictionary.h"
+#import "RxMatch+NSString.h"
 
 @implementation RxMatch (NSString)
 
-- (NSString *)toString{
+- (NSString *) toString{
     return [self.groups[1] value];
 }
 

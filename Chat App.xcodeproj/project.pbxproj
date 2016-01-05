@@ -11,7 +11,7 @@
 		A2920EE11C2C2F34007C5235 /* LinkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A2920EE01C2C2F34007C5235 /* LinkModel.m */; settings = {ASSET_TAGS = (); }; };
 		A2920EE61C2C368D007C5235 /* RESTClientImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = A2920EE51C2C368D007C5235 /* RESTClientImpl.m */; settings = {ASSET_TAGS = (); }; };
 		A2A2BF531C2EB04900FF12D3 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = A2A2BF521C2EB04900FF12D3 /* Constants.m */; settings = {ASSET_TAGS = (); }; };
-		A2A2BF581C2F2B8500FF12D3 /* RxMatch+NSDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = A2A2BF571C2F2B8500FF12D3 /* RxMatch+NSDictionary.m */; settings = {ASSET_TAGS = (); }; };
+		A2DEFBD41C2F542600F256C2 /* RxMatch+NSString.m in Sources */ = {isa = PBXBuildFile; fileRef = A2DEFBD31C2F542600F256C2 /* RxMatch+NSString.m */; settings = {ASSET_TAGS = (); }; };
 		A2F6F6761C23620E005E340D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F6F6751C23620E005E340D /* main.m */; };
 		A2F6F6791C23620E005E340D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F6F6781C23620E005E340D /* AppDelegate.m */; };
 		A2F6F67C1C23620E005E340D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F6F67B1C23620E005E340D /* ViewController.m */; };
@@ -44,8 +44,8 @@
 		A2920EE51C2C368D007C5235 /* RESTClientImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESTClientImpl.m; sourceTree = "<group>"; };
 		A2A2BF521C2EB04900FF12D3 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Constants.m; path = Constants/Constants.m; sourceTree = "<group>"; };
 		A2A2BF541C2EB05A00FF12D3 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = Constants/Constants.h; sourceTree = "<group>"; };
-		A2A2BF561C2F2B8500FF12D3 /* RxMatch+NSDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "RxMatch+NSDictionary.h"; path = "Models/RxMatch+NSDictionary.h"; sourceTree = "<group>"; };
-		A2A2BF571C2F2B8500FF12D3 /* RxMatch+NSDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "RxMatch+NSDictionary.m"; path = "Models/RxMatch+NSDictionary.m"; sourceTree = "<group>"; };
+		A2DEFBD21C2F542600F256C2 /* RxMatch+NSString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "RxMatch+NSString.h"; path = "Models/RxMatch+NSString.h"; sourceTree = "<group>"; };
+		A2DEFBD31C2F542600F256C2 /* RxMatch+NSString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "RxMatch+NSString.m"; path = "Models/RxMatch+NSString.m"; sourceTree = "<group>"; };
 		A2F6F6711C23620E005E340D /* Chat App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chat App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2F6F6751C23620E005E340D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A2F6F6771C23620E005E340D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -105,8 +105,8 @@
 				A2920EDD1C2C2E9A007C5235 /* ResponseModel.m */,
 				A2920EDF1C2C2F34007C5235 /* LinkModel.h */,
 				A2920EE01C2C2F34007C5235 /* LinkModel.m */,
-				A2A2BF561C2F2B8500FF12D3 /* RxMatch+NSDictionary.h */,
-				A2A2BF571C2F2B8500FF12D3 /* RxMatch+NSDictionary.m */,
+				A2DEFBD21C2F542600F256C2 /* RxMatch+NSString.h */,
+				A2DEFBD31C2F542600F256C2 /* RxMatch+NSString.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -347,12 +347,12 @@
 			files = (
 				A2920EDE1C2C2E9A007C5235 /* ResponseModel.m in Sources */,
 				A2F6F67C1C23620E005E340D /* ViewController.m in Sources */,
-				A2A2BF581C2F2B8500FF12D3 /* RxMatch+NSDictionary.m in Sources */,
 				A2920EE61C2C368D007C5235 /* RESTClientImpl.m in Sources */,
 				A2920EE11C2C2F34007C5235 /* LinkModel.m in Sources */,
 				A2F6F6791C23620E005E340D /* AppDelegate.m in Sources */,
 				A2A2BF531C2EB04900FF12D3 /* Constants.m in Sources */,
 				A2F6F6761C23620E005E340D /* main.m in Sources */,
+				A2DEFBD41C2F542600F256C2 /* RxMatch+NSString.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,10 +10,10 @@
 #import "ResponseModel.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
 #import "Constants.h"
+#import "LinkModel.h"
 
 @interface ViewController (){
     __weak IBOutlet UILabel *_outputLabel;
-    __weak IBOutlet UIScrollView *_scrollView;
     __weak IBOutlet UITextField *_inputField;
 }
 
@@ -28,18 +28,16 @@
     
     ResponseModel *response = [[ResponseModel alloc] initWithString:_inputField.text];
     
-    NSError *err;
-    NSDictionary *outputDict = [MTLJSONAdapter JSONDictionaryFromModel:response error:&err];
-    if (err) {
-        DDLogError(@"%@", err.description);
-    }
-    
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:outputDict options:NSJSONWritingPrettyPrinted error:&err];
-    
-    if (err) {
-        DDLogError(@"%@", err.description);
-    }
-    _outputLabel.text = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    [response toJSONDict:^(NSDictionary *dict) {
+        NSError *err;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&err];
+        
+        if (err) {
+            DDLogError(@"%@", err.description);
+        }else{
+            _outputLabel.text = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        }
+    }];
 }
 
 

@@ -6,20 +6,22 @@
 //  Copyright © 2015 Apro. All rights reserved.
 //
 
-#import <Mantle/Mantle.h>
+#import <Foundation/Foundation.h>
 
-@class LinkModel, RxMatch;
+@class LinkModel;
 
-@interface ResponseModel : MTLModel<MTLJSONSerializing>
+@interface ResponseModel : NSObject
 
-@property(nonnull, nonatomic, copy, readonly) NSArray<RxMatch *> *mentions;
+@property(nonnull, nonatomic, copy, readonly) NSArray<NSString *> *mentions;
 
-@property(nonnull, nonatomic, copy, readonly) NSArray<RxMatch *> *emoticons;
+@property(nonnull, nonatomic, copy, readonly) NSArray<NSString *> *emoticons;
 
 @property(nonnull, nonatomic, copy, readonly) NSArray<LinkModel *> *links;
 
 - (nonnull instancetype)initWithString:(nonnull NSString *)string NS_DESIGNATED_INITIALIZER;
 
 - (nullable instancetype)init NS_UNAVAILABLE;
+
+- (void) toJSONDict:(nonnull void(^)(NSDictionary * _Nonnull)) handler;
 
 @end

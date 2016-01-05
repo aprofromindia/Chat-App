@@ -20,4 +20,5 @@
 - (void) getRequest:(nonnull NSString *) path params:(nullable NSDictionary *) params
          completion:(nonnull void(^)(id _Nullable response, NSError *_Nullable error)) handler;
 
+
 @end
