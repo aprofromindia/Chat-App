@@ -77,11 +77,18 @@ NSArray<LinkModel *> * p_linksArrayFromRegex(NSString *string,  Rx *regex)
             i++;
             
             if(i == _links.count){
-                NSDictionary *dict = @{
-                                       @"mentions" : _mentions,
-                                       @"emoticons" : _emoticons,
-                                       @"links" : linkDicts
-                                       };
+                NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:3];
+                if (_mentions.count > 0) {
+                    [dict setValue:_mentions forKey:@"mentions"];
+                }
+                
+                if (_emoticons.count > 0) {
+                    [dict setValue:_emoticons forKey:@"emoticons"];
+                }
+                
+                if (_links.count > 0) {
+                    [dict setValue:linkDicts forKey:@"links"];
+                }
                 handler(dict);
             }
         }];

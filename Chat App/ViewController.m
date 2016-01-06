@@ -10,9 +10,8 @@
 #import "ResponseModel.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
 #import "Constants.h"
-#import "LinkModel.h"
 
-@interface ViewController (){
+@interface ViewController ()<UITextFieldDelegate>{
     __weak IBOutlet UILabel *_outputLabel;
     __weak IBOutlet UITextField *_inputField;
 }
@@ -25,7 +24,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     _inputField.text = @"@tom @john likes (coffee) and http://twitter.com";
-    
+}
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - UITextFieldDelegate methods
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     ResponseModel *response = [[ResponseModel alloc] initWithString:_inputField.text];
     
     [response toJSONDict:^(NSDictionary *dict) {
@@ -37,13 +47,9 @@
         }else{
             _outputLabel.text = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
         }
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     }];
-}
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    return true;
 }
 
 @end
