@@ -14,6 +14,8 @@
 
 static id<RESTClient> RESTClient;
 static NSString *const kTitleTag = @"<title>(.*)<\\/title>";
+static NSString *const kURLKey = @"url";
+static NSString *const kTitleKey = @"title";
 
 @interface LinkModel ()
 
@@ -51,10 +53,10 @@ static NSString *const kTitleTag = @"<title>(.*)<\\/title>";
             NSString *respString = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
             _title = [[respString firstMatchWithDetails:RX(kTitleTag)] toString];
             
-            if(_title){
-                NSDictionary *dict = @{@"url" : _url, @"title" : _title};
-                handler(dict);
-            }
+            NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:2];
+            [dict setValue:_url forKey:kURLKey];
+            [dict setValue:_title forKey:kTitleKey];
+            handler(dict);
         }
     }];
 }

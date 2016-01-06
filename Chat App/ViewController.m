@@ -23,13 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    _inputField.text = @"@tom @john likes (coffee) and http://twitter.com";
-}
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+//    _inputField.text = @"@tom @john likes (coffee) and http://twitter.com";
+//    [self textFieldShouldReturn:_inputField];
 }
 
 #pragma mark - UITextFieldDelegate methods

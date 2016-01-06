@@ -15,12 +15,10 @@ SpecBegin(LinkModel)
 
 describe(@"LinkModel", ^{
     
-    beforeAll(^{
-
-    });
+    __block LinkModel *_linkModel;
     
     beforeEach(^{
-
+        _linkModel = [[LinkModel alloc] initWithURL:@"http://twitter.com"];
     });
     
     it(@"", ^{
@@ -28,11 +26,7 @@ describe(@"LinkModel", ^{
     });  
     
     afterEach(^{
-
-    });
-    
-    afterAll(^{
-
+        _linkModel = nil;
     });
 });
 

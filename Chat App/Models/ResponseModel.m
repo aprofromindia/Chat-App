@@ -16,6 +16,11 @@ static NSString *const kMentionRx = @"@(\\w+)";
 static NSString *const kEmoticonRx = @"\\(([a-z1-9]{1,15})\\)";
 static NSString *const kUrlRx = @"(https?|ftp):\\/\\/[^\\s\\/\\$\\.\\?\\#]+\\.[^\\s]*";
 
+static NSString *const kMentionsKey = @"mentions";
+static NSString *const kEmoticonsKey = @"emoticons";
+static NSString *const kLinksKey = @"links";
+static const int kDictCapacity = 3;
+
 @interface ResponseModel ()
 
 @property(nonnull, nonatomic, copy, readwrite) NSArray<NSString *> *mentions;
@@ -67,31 +72,34 @@ NSArray<LinkModel *> * p_linksArrayFromRegex(NSString *string,  Rx *regex)
 }
 
 - (void)toJSONDict:(void (^)(NSDictionary *))handler{
-    NSMutableArray <NSDictionary *> *linkDicts = [NSMutableArray new];
+    __block NSMutableDictionary *responseDict = [NSMutableDictionary dictionaryWithCapacity:kDictCapacity];
     
-    __block int i = 0;
+    if (_mentions.count > 0) {
+        [responseDict setValue:_mentions forKey:kMentionsKey];
+    }
     
-    for (LinkModel *link in _links) {
-        [link toJSONDict:^(NSDictionary *dict) {
-            [linkDicts addObject:dict];
-            i++;
-            
-            if(i == _links.count){
-                NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:3];
-                if (_mentions.count > 0) {
-                    [dict setValue:_mentions forKey:@"mentions"];
-                }
+    if (_emoticons.count > 0) {
+        [responseDict setValue:_emoticons forKey:kEmoticonsKey];
+    }
+    
+    if (_links.count > 0) {
+        
+        NSMutableArray <NSDictionary *> *linkDicts = [NSMutableArray arrayWithCapacity:_links.count];
+        __block int i = 0;
+        
+        for (LinkModel *link in _links) {
+            [link toJSONDict:^(NSDictionary *dict) {
+                [linkDicts addObject:dict];
+                i++;
                 
-                if (_emoticons.count > 0) {
-                    [dict setValue:_emoticons forKey:@"emoticons"];
+                if(i == _links.count){
+                    [responseDict setValue:linkDicts forKey:kLinksKey];
+                    handler(responseDict);
                 }
-                
-                if (_links.count > 0) {
-                    [dict setValue:linkDicts forKey:@"links"];
-                }
-                handler(dict);
-            }
-        }];
+            }];
+        }
+    }else{
+        handler(responseDict);
     }
 }
 
