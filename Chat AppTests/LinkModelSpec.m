@@ -21,9 +21,19 @@ describe(@"LinkModel", ^{
         _linkModel = [[LinkModel alloc] initWithURL:@"http://twitter.com"];
     });
     
-    it(@"", ^{
-
-    });  
+    describe(@"JSON dictionary encoding", ^{
+        
+        it(@"should have a title", ^{
+            waitUntil(^(DoneCallback done) {
+               [_linkModel toJSONDict:^(NSDictionary *dict) {
+                   expect(_linkModel.title).notTo.beNil;
+                   expect(_linkModel.title).to.beKindOf([NSString class]);
+                   expect(_linkModel.title).to.equal(@"Welcome to Twitter");
+                   done();
+               }];
+            });
+        });
+    });
     
     afterEach(^{
         _linkModel = nil;

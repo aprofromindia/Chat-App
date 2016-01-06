@@ -15,10 +15,10 @@ SpecBegin(ResponseModel)
 
 describe(@"ResponseModel", ^{
     
-    describe(@"mentions + emoticons + links string", ^{
+    context(@"mentions + emoticons + links string", ^{
         ResponseModel *responseModel = [[ResponseModel alloc] initWithString:@"@bob @john (success) such a cool feature; https://twitter.com/jdorfman/status/430511497475670016"];
         
-        it(@"should return a JSON dictionary of count 3", ^{
+        it(@"should return a dictionary of count 3", ^{
             waitUntil(^(DoneCallback done) {
                 [responseModel toJSONDict:^(NSDictionary *dict) {
                     expect(dict).to.beKindOf([NSDictionary class]);
@@ -31,7 +31,7 @@ describe(@"ResponseModel", ^{
             });
         });
         
-        it(@"should serialise to JSON string", ^{
+        it(@"should serialise to a JSON string", ^{
             waitUntil(^(DoneCallback done) {
                 [responseModel toJSONDict:^(NSDictionary *dict) {
                     NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:nil];
@@ -47,10 +47,10 @@ describe(@"ResponseModel", ^{
         });
     });
     
-    describe(@"mentions only string", ^{
+    context(@"mentions only string", ^{
         ResponseModel *responseModel = [[ResponseModel alloc] initWithString:@"@chris you around?"];
         
-        it(@"should return a 1 element JSON Dictionary", ^{
+        it(@"should return a 1 element Dictionary", ^{
             waitUntil(^(DoneCallback done) {
                [responseModel toJSONDict:^(NSDictionary *dict) {
                    expect(dict).to.beKindOf([NSDictionary class]);
@@ -62,10 +62,10 @@ describe(@"ResponseModel", ^{
         
     });
 
-    describe(@"mentions + emoticons string", ^{
+    context(@"mentions + emoticons string", ^{
         ResponseModel *responseModel = [[ResponseModel alloc] initWithString:@"@chris - Good morning! (megusta) (coffee)"];
         
-        it(@"should return a 2 element JSON Dictionary", ^{
+        it(@"should return a 2 element Dictionary", ^{
             waitUntil(^(DoneCallback done) {
                 [responseModel toJSONDict:^(NSDictionary *dict) {
                     expect(dict).to.beKindOf([NSDictionary class]);
