@@ -51,7 +51,7 @@ static NSString *const kTitleKey = @"title";
     [RESTClient getRequest:_url params:nil completion:^(id response, NSError *error) {
         if (!error && [response isKindOfClass:[NSData class]]) {
             NSString *respString = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
-            _title = [[respString firstMatchWithDetails:RX(kTitleTag)] toString];
+            self.title = [[respString firstMatchWithDetails:RX(kTitleTag)] toString];
             
             NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:2];
             [dict setValue:_url forKey:kURLKey];
